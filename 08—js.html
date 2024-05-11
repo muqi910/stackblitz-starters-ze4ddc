@@ -1,0 +1,45 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>武侠人物生成器</title>  
+</head>  
+<body>  
+  
+<h1>武侠人物生成器</h1>  
+  
+<p id="characterIntro"></p>  
+  
+<button onclick="generateAndDisplayCharacter()">生成人物</button>  
+  
+<script>  
+// 定义可能的出身、禀赋、性格和魅力描述  
+const origins = ['名门望族', '江湖草莽', '乡野村夫', '武林世家', '边塞孤儿'];  
+const talents = ['天赋异禀', '资质平庸', '勤学苦练', '悟性惊人', '身法轻盈'];  
+const personalities = ['侠骨柔肠', '冷酷无情', '豁达开朗', '深沉内敛', '狡黠多变'];  
+const charms = ['风华绝代', '英气逼人', '气宇轩昂', '温柔如水', '潇洒不羁'];  
+  
+// 生成人物介绍的函数  
+function generateCharacter() {  
+    // 随机选择出身、禀赋、性格和魅力  
+    const origin = origins[Math.floor(Math.random() * origins.length)];  
+    const talent = talents[Math.floor(Math.random() * talents.length)];  
+    const personality = personalities[Math.floor(Math.random() * personalities.length)];  
+    const charm = charms[Math.floor(Math.random() * charms.length)];  
+  
+    // 组合成人物介绍  
+    const introduction = `此人乃${origin}之后，自幼${talent}，性格${personality}，举手投足间尽显${charm}之姿。`;  
+    return introduction;  
+}  
+  
+// 调用函数生成并显示人物介绍  
+function generateAndDisplayCharacter() {  
+    const characterIntroElement = document.getElementById('characterIntro');  
+    const introduction = generateCharacter();  
+    characterIntroElement.textContent = introduction;  
+}  
+</script>  
+  
+</body>  
+</html>
