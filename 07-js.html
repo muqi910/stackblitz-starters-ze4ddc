@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS基础知识</title>
 </head>
-
 <body>
     <script>
         //   alert("这是来自js脚本的❤");
@@ -29,7 +27,59 @@
         console.log(age);
         //   字符串也可以使用加号进行拼接
         console.log(name + "今年" + age "岁。")；
+        //  使用反引号及${}进行字符串内容的拼接
+        console.log('${name今年${age}岁'}；
+        //  相等（值相等）和绝对相等（值和类型都相同）
+        console.log(2 == "2");
+        console.log(2 === "2");
+        //  流程控制-条件
+        let today = "星期四"；
+        if (today == "星期四"){
+            console.log("听说星期天补星期四的课")；
+        }  else{
+            console.log("只要是课，统统都给我补！")；
+        }
+        name = "小小明"；
+        if(name == "小丽"）{
+            console.log("天生丽质")；
+        } else if (name =="小明") {
+            console.log("天生舔狗")；
+        } else {
+            console.log("丁克")；
+        }
+         //  for循环，循环要有一个终止的条件
+         // index++ 相当于 index = index + 1 
+         for (let index = 0; index < 10; index++)  {
+            console.log(index);
+         }
+         let index = 9
+         while (index < 15){
+            index++;
+            console.log(index)
+         }
+         async function getRepositoryCommits(githubRepoUrl){
+            // 首先，从提供仓库 URL 中提取出仓库的用户名和仓库名
+            const matches = githubRepoUrl.match(
+            /github\.com\/(.+?)\/(.+?)(?:\.git)?$/
+            );
+            if(!matches){
+                return { error: "Invalid GitHub respository URL"};
+            }
+            const[, username,repo] = matches;
 
+            //GitHub API URL 用于获取仓库提交
+            const commitsApiUrl =  `https://api.github.com/repos/${username}/${repo}/commits`;
+
+            try{
+                //使用 fetch 获取仓库提交
+                const response = await fetch(commitsApiUrl);
+                if(!response.ok){
+                    throw new Error('GitHub API returned an error:${response.status}');
+                }
+                
+                )
+            }
+         }
     </script>
 </body>
 
