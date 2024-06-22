@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        font-family: "SimHei", "Arial", sans-serif;
+        background: #f4e8bc; /* 传统中国风的背景色(黄色) */
+        color: #c00d0d;
+        text-align: center;
+        padding: 45px;
+      }
+
+      h2 {
+        color: #f33030; /* 传统中国红 */
+        font-size: 3.6em;
+      }
+
+      #generateButton {
+        padding: 15px 60px;
+        font-size: 1.2em;
+        color: #ffffff;
+        background-color: #952410; /* 传统中国红 */
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        outline: none;
+        margin: 20px 0;
+        transition: background-color 0.3s ease;
+      }
+
+      #generateButton:hover {
+        background-color: #8b4131; /* 暗红色 */
+      }
+
+      #generateButton:active {
+        background-color: #5c2b1d; /* 更深的红色 */
+      }
+
+      .character-info {
+        background: #ffffff; /* 白色背景 */
+        border: 1px solid #bcbcbc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        display: inline-block;
+        margin-top: 50px;
+        padding: 30px;
+        text-align: left;
+        position: relative;
+      }
+
+      .character-info:before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border: 1px solid #bcbcbc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-bottom: none;
+        border-radius: 50% 50% 0 0;
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      .character-info p {
+        margin: 10px 0;
+        font-size: 1.2em;
+      }
+
+      .character-info span {
+        color: #7e482e; /* 传统中国红 */
+        font-weight: bold;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>武侠人物生成器</title>
+    <script>
+      // 定义人物属性的可选列表
+      let backgrounds = ['名门望族', '江湖草莽', '乡野村夫', '武林世家', '边塞孤儿'];
+      let talents = ['天赋异禀', '资质平庸', '勤学苦练', '悟性惊人', '身法轻盈'];
+      let personalities = ['侠骨柔肠', '冷酷无情', '豁达开朗', '深沉内敛', '狡黠多变'];
+      let charms = ['风华绝代', '英气逼人', '气宇轩昂', '温柔如水', '潇洒不羁'];
+
+      // 随机生成人物介绍的函数
+      function generateCharacter() {
+        let character = {
+          background:
+            backgrounds[Math.floor(Math.random() * backgrounds.length)],
+          talent: talents[Math.floor(Math.random() * talents.length)],
+          personality:
+            personalities[Math.floor(Math.random() * personalities.length)],
+          charm: charms[Math.floor(Math.random() * charms.length)],
+        };
+        return character;
+      }
+
+      // 更新页面显示的函数
+      function updateCharacterDisplay() {
+        let character = generateCharacter();
+        document.getElementById(
+          "background"
+        ).textContent = `出身: ${character.background}`;
+        document.getElementById(
+          "talent"
+        ).textContent = `禀赋: ${character.talent}`;
+        document.getElementById(
+          "personality"
+        ).textContent = `性格: ${character.personality}`;
+        document.getElementById(
+          "charm"
+        ).textContent = `魅力: ${character.charm}`;
+      }
+
+      // 当文档加载完成后，添加点击事件监听器
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("generateButton")
+          .addEventListener("click", updateCharacterDisplay);
+      });
+    </script>
+  </head>
+  <body>
+    <h2>武侠人物生成器</h2>
+    <button id="generateButton">点击此处生成武侠人物</button>
+
+    <div>
+      <p><span id="background"></span></p>
+      <p><span id="talent"></span></p>
+      <p><span id="personality"></span></p>
+      <p><span id="charm"></span></p>
+    </div>
+  </body>
+</html>
